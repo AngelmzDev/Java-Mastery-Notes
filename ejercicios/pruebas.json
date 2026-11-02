@@ -1,0 +1,584 @@
+[
+  {
+    "class_name": "ejercicios.E01PresupuestoDeMaterial",
+    "exercise": 1,
+    "input": "2.5 4\n",
+    "expected": "Base 10.00 IVA 2.10 Total 12.10"
+  },
+  {
+    "class_name": "ejercicios.E01PresupuestoDeMaterial",
+    "exercise": 1,
+    "input": "0 0\n",
+    "expected": "Base 0.00 IVA 0.00 Total 0.00"
+  },
+  {
+    "class_name": "ejercicios.E01PresupuestoDeMaterial",
+    "exercise": 1,
+    "input": "-2 3\n",
+    "expected": "Datos no válidos"
+  },
+  {
+    "class_name": "ejercicios.E02DuracionDeUnPodcast",
+    "exercise": 2,
+    "input": "7384\n",
+    "expected": "2h 3m 4s"
+  },
+  {
+    "class_name": "ejercicios.E02DuracionDeUnPodcast",
+    "exercise": 2,
+    "input": "0\n",
+    "expected": "0h 0m 0s"
+  },
+  {
+    "class_name": "ejercicios.E02DuracionDeUnPodcast",
+    "exercise": 2,
+    "input": "3600\n",
+    "expected": "1h 0m 0s"
+  },
+  {
+    "class_name": "ejercicios.E02DuracionDeUnPodcast",
+    "exercise": 2,
+    "input": "-1\n",
+    "expected": "Duración no válida"
+  },
+  {
+    "class_name": "ejercicios.E03CodigoDeTaquilla",
+    "exercise": 3,
+    "input": "482\n",
+    "expected": "4 8 2"
+  },
+  {
+    "class_name": "ejercicios.E03CodigoDeTaquilla",
+    "exercise": 3,
+    "input": "100\n",
+    "expected": "1 0 0"
+  },
+  {
+    "class_name": "ejercicios.E03CodigoDeTaquilla",
+    "exercise": 3,
+    "input": "999\n",
+    "expected": "9 9 9"
+  },
+  {
+    "class_name": "ejercicios.E03CodigoDeTaquilla",
+    "exercise": 3,
+    "input": "99\n",
+    "expected": "Código no válido"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "-1\n",
+    "expected": "Puntuación no válida"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "0\n",
+    "expected": "En progreso"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "4\n",
+    "expected": "En progreso"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "5\n",
+    "expected": "Superado"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "6\n",
+    "expected": "Superado"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "7\n",
+    "expected": "Destacado"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "8\n",
+    "expected": "Destacado"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "9\n",
+    "expected": "Excelente"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "10\n",
+    "expected": "Excelente"
+  },
+  {
+    "class_name": "ejercicios.E04NivelesDeUnaPrueba",
+    "exercise": 4,
+    "input": "11\n",
+    "expected": "Puntuación no válida"
+  },
+  {
+    "class_name": "ejercicios.E05SiguienteDiaDeReserva",
+    "exercise": 5,
+    "input": "28 2 2024\n",
+    "expected": "29/2/2024"
+  },
+  {
+    "class_name": "ejercicios.E05SiguienteDiaDeReserva",
+    "exercise": 5,
+    "input": "29 2 2024\n",
+    "expected": "1/3/2024"
+  },
+  {
+    "class_name": "ejercicios.E05SiguienteDiaDeReserva",
+    "exercise": 5,
+    "input": "29 2 1900\n",
+    "expected": "Fecha no válida"
+  },
+  {
+    "class_name": "ejercicios.E05SiguienteDiaDeReserva",
+    "exercise": 5,
+    "input": "28 2 2000\n",
+    "expected": "29/2/2000"
+  },
+  {
+    "class_name": "ejercicios.E05SiguienteDiaDeReserva",
+    "exercise": 5,
+    "input": "31 4 2026\n",
+    "expected": "Fecha no válida"
+  },
+  {
+    "class_name": "ejercicios.E05SiguienteDiaDeReserva",
+    "exercise": 5,
+    "input": "31 12 2025\n",
+    "expected": "1/1/2026"
+  },
+  {
+    "class_name": "ejercicios.E05SiguienteDiaDeReserva",
+    "exercise": 5,
+    "input": "0 1 2026\n",
+    "expected": "Fecha no válida"
+  },
+  {
+    "class_name": "ejercicios.E05SiguienteDiaDeReserva",
+    "exercise": 5,
+    "input": "1 13 2026\n",
+    "expected": "Fecha no válida"
+  },
+  {
+    "class_name": "ejercicios.E06LetraDeUnRotulo",
+    "exercise": 6,
+    "input": "E\n",
+    "expected": "Vocal"
+  },
+  {
+    "class_name": "ejercicios.E06LetraDeUnRotulo",
+    "exercise": 6,
+    "input": "z\n",
+    "expected": "Consonante"
+  },
+  {
+    "class_name": "ejercicios.E06LetraDeUnRotulo",
+    "exercise": 6,
+    "input": "7\n",
+    "expected": "Carácter no válido"
+  },
+  {
+    "class_name": "ejercicios.E06LetraDeUnRotulo",
+    "exercise": 6,
+    "input": "ae\n",
+    "expected": "Carácter no válido"
+  },
+  {
+    "class_name": "ejercicios.E06LetraDeUnRotulo",
+    "exercise": 6,
+    "input": "\n",
+    "expected": "Carácter no válido"
+  },
+  {
+    "class_name": "ejercicios.E06LetraDeUnRotulo",
+    "exercise": 6,
+    "input": "ñ\n",
+    "expected": "Carácter no válido"
+  },
+  {
+    "class_name": "ejercicios.E07GruposDePiezas",
+    "exercise": 7,
+    "input": "0\n",
+    "expected": "Par"
+  },
+  {
+    "class_name": "ejercicios.E07GruposDePiezas",
+    "exercise": 7,
+    "input": "7\n",
+    "expected": "Impar"
+  },
+  {
+    "class_name": "ejercicios.E07GruposDePiezas",
+    "exercise": 7,
+    "input": "8\n",
+    "expected": "Par"
+  },
+  {
+    "class_name": "ejercicios.E07GruposDePiezas",
+    "exercise": 7,
+    "input": "-1\n",
+    "expected": "Cantidad no válida"
+  },
+  {
+    "class_name": "ejercicios.E08OrdenDeTresTiempos",
+    "exercise": 8,
+    "input": "9 4 2\n",
+    "expected": "2 4 9"
+  },
+  {
+    "class_name": "ejercicios.E08OrdenDeTresTiempos",
+    "exercise": 8,
+    "input": "1 2 3\n",
+    "expected": "1 2 3"
+  },
+  {
+    "class_name": "ejercicios.E08OrdenDeTresTiempos",
+    "exercise": 8,
+    "input": "5 5 1\n",
+    "expected": "1 5 5"
+  },
+  {
+    "class_name": "ejercicios.E08OrdenDeTresTiempos",
+    "exercise": 8,
+    "input": "-1 -9 0\n",
+    "expected": "-9 -1 0"
+  },
+  {
+    "class_name": "ejercicios.E09TablaDeLotes",
+    "exercise": 9,
+    "input": "3\n",
+    "expected": "3 x 1 = 3\n3 x 2 = 6\n3 x 3 = 9\n3 x 4 = 12\n3 x 5 = 15\n3 x 6 = 18\n3 x 7 = 21\n3 x 8 = 24\n3 x 9 = 27\n3 x 10 = 30"
+  },
+  {
+    "class_name": "ejercicios.E09TablaDeLotes",
+    "exercise": 9,
+    "input": "0\n",
+    "expected": "Lote no válido"
+  },
+  {
+    "class_name": "ejercicios.E10DorsalesEnIntervalo",
+    "exercise": 10,
+    "input": "3 7\n",
+    "expected": "4\n6"
+  },
+  {
+    "class_name": "ejercicios.E10DorsalesEnIntervalo",
+    "exercise": 10,
+    "input": "5 5\n",
+    "expected": "Sin pares"
+  },
+  {
+    "class_name": "ejercicios.E10DorsalesEnIntervalo",
+    "exercise": 10,
+    "input": "0 0\n",
+    "expected": "0"
+  },
+  {
+    "class_name": "ejercicios.E10DorsalesEnIntervalo",
+    "exercise": 10,
+    "input": "7 3\n",
+    "expected": "Intervalo no válido"
+  },
+  {
+    "class_name": "ejercicios.E11PotenciaPorProductos",
+    "exercise": 11,
+    "input": "3 4\n",
+    "expected": "81"
+  },
+  {
+    "class_name": "ejercicios.E11PotenciaPorProductos",
+    "exercise": 11,
+    "input": "7 0\n",
+    "expected": "1"
+  },
+  {
+    "class_name": "ejercicios.E11PotenciaPorProductos",
+    "exercise": 11,
+    "input": "-2 3\n",
+    "expected": "-8"
+  },
+  {
+    "class_name": "ejercicios.E11PotenciaPorProductos",
+    "exercise": 11,
+    "input": "0 5\n",
+    "expected": "0"
+  },
+  {
+    "class_name": "ejercicios.E11PotenciaPorProductos",
+    "exercise": 11,
+    "input": "10 18\n",
+    "expected": "1000000000000000000"
+  },
+  {
+    "class_name": "ejercicios.E11PotenciaPorProductos",
+    "exercise": 11,
+    "input": "2 -1\n",
+    "expected": "Datos no válidos"
+  },
+  {
+    "class_name": "ejercicios.E12TemperaturasDeInvernadero",
+    "exercise": 12,
+    "input": "3 -4 -7 -2\n",
+    "expected": "Media -4.33 Máxima -2.00 Mínima -7.00"
+  },
+  {
+    "class_name": "ejercicios.E12TemperaturasDeInvernadero",
+    "exercise": 12,
+    "input": "1 0\n",
+    "expected": "Media 0.00 Máxima 0.00 Mínima 0.00"
+  },
+  {
+    "class_name": "ejercicios.E12TemperaturasDeInvernadero",
+    "exercise": 12,
+    "input": "2 -70 5 7\n",
+    "expected": "Medida rechazada\nMedia 6.00 Máxima 7.00 Mínima 5.00"
+  },
+  {
+    "class_name": "ejercicios.E12TemperaturasDeInvernadero",
+    "exercise": 12,
+    "input": "0\n",
+    "expected": "Cantidad no válida"
+  },
+  {
+    "class_name": "ejercicios.E13RecuentoDeParticipantes",
+    "exercise": 13,
+    "input": "3 7 1900 4 2200 9 1500\n",
+    "expected": "Aprobadas 2 Sueldos altos 2"
+  },
+  {
+    "class_name": "ejercicios.E13RecuentoDeParticipantes",
+    "exercise": 13,
+    "input": "1 5 1800\n",
+    "expected": "Aprobadas 1 Sueldos altos 0"
+  },
+  {
+    "class_name": "ejercicios.E13RecuentoDeParticipantes",
+    "exercise": 13,
+    "input": "1 7 -2 3 1900\n",
+    "expected": "Ficha rechazada\nAprobadas 0 Sueldos altos 1"
+  },
+  {
+    "class_name": "ejercicios.E14DosDadosDeMesa",
+    "exercise": 14,
+    "input": "",
+    "expected": null
+  },
+  {
+    "class_name": "ejercicios.E15SorteoDeTaquillas",
+    "exercise": 15,
+    "input": "",
+    "expected": null
+  },
+  {
+    "class_name": "ejercicios.E16AdivinaElCodigo",
+    "exercise": 16,
+    "input": "0\n",
+    "expected": "Abandono"
+  },
+  {
+    "class_name": "ejercicios.E16AdivinaElCodigo",
+    "exercise": 16,
+    "input": "-2 0\n",
+    "expected": "Propuesta no válida\nAbandono"
+  },
+  {
+    "class_name": "ejercicios.E16AdivinaElCodigo",
+    "exercise": 16,
+    "input": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\n",
+    "expected": null
+  },
+  {
+    "class_name": "ejercicios.E17ConversorDeBases",
+    "exercise": 17,
+    "input": "16 2 1a\n",
+    "expected": "11010"
+  },
+  {
+    "class_name": "ejercicios.E17ConversorDeBases",
+    "exercise": 17,
+    "input": "2 10 10110\n",
+    "expected": "22"
+  },
+  {
+    "class_name": "ejercicios.E17ConversorDeBases",
+    "exercise": 17,
+    "input": "8 10 347\n",
+    "expected": "231"
+  },
+  {
+    "class_name": "ejercicios.E17ConversorDeBases",
+    "exercise": 17,
+    "input": "10 16 94\n",
+    "expected": "5E"
+  },
+  {
+    "class_name": "ejercicios.E17ConversorDeBases",
+    "exercise": 17,
+    "input": "10 2 0\n",
+    "expected": "0"
+  },
+  {
+    "class_name": "ejercicios.E17ConversorDeBases",
+    "exercise": 17,
+    "input": "2 8 102\n",
+    "expected": "Datos no válidos"
+  },
+  {
+    "class_name": "ejercicios.E17ConversorDeBases",
+    "exercise": 17,
+    "input": "3 10 12\n",
+    "expected": "Datos no válidos"
+  },
+  {
+    "class_name": "ejercicios.E18RotuloInverso",
+    "exercise": 18,
+    "input": "faro\n",
+    "expected": "oraf"
+  },
+  {
+    "class_name": "ejercicios.E18RotuloInverso",
+    "exercise": 18,
+    "input": "A b\n",
+    "expected": "b A"
+  },
+  {
+    "class_name": "ejercicios.E18RotuloInverso",
+    "exercise": 18,
+    "input": "\n",
+    "expected": ""
+  },
+  {
+    "class_name": "ejercicios.E19PalabraSimetrica",
+    "exercise": 19,
+    "input": "Radar\n",
+    "expected": "Palíndromo"
+  },
+  {
+    "class_name": "ejercicios.E19PalabraSimetrica",
+    "exercise": 19,
+    "input": "Casa\n",
+    "expected": "No es palíndromo"
+  },
+  {
+    "class_name": "ejercicios.E19PalabraSimetrica",
+    "exercise": 19,
+    "input": "a\n",
+    "expected": "Palíndromo"
+  },
+  {
+    "class_name": "ejercicios.E19PalabraSimetrica",
+    "exercise": 19,
+    "input": "\n",
+    "expected": "Palabra no válida"
+  },
+  {
+    "class_name": "ejercicios.E19PalabraSimetrica",
+    "exercise": 19,
+    "input": "an a\n",
+    "expected": "Palabra no válida"
+  },
+  {
+    "class_name": "ejercicios.E20PanelDeEstrellas",
+    "exercise": 20,
+    "input": "2\n",
+    "expected": "**\n**\n---\n*\n**"
+  },
+  {
+    "class_name": "ejercicios.E20PanelDeEstrellas",
+    "exercise": 20,
+    "input": "1\n",
+    "expected": "*\n---\n*"
+  },
+  {
+    "class_name": "ejercicios.E20PanelDeEstrellas",
+    "exercise": 20,
+    "input": "0\n",
+    "expected": "Lado no válido"
+  },
+  {
+    "class_name": "ejercicios.E21AnalisisDeUnAviso",
+    "exercise": 21,
+    "input": "Sol y luna\n",
+    "expected": "Palabras 3 Vocales 3 Larga luna"
+  },
+  {
+    "class_name": "ejercicios.E21AnalisisDeUnAviso",
+    "exercise": 21,
+    "input": "  mar   sol  \n",
+    "expected": "Palabras 2 Vocales 2 Larga mar"
+  },
+  {
+    "class_name": "ejercicios.E21AnalisisDeUnAviso",
+    "exercise": 21,
+    "input": " \n",
+    "expected": "Sin texto"
+  },
+  {
+    "class_name": "ejercicios.E22FactorialDeUnaCantidad",
+    "exercise": 22,
+    "input": "0\n",
+    "expected": "1"
+  },
+  {
+    "class_name": "ejercicios.E22FactorialDeUnaCantidad",
+    "exercise": 22,
+    "input": "1\n",
+    "expected": "1"
+  },
+  {
+    "class_name": "ejercicios.E22FactorialDeUnaCantidad",
+    "exercise": 22,
+    "input": "5\n",
+    "expected": "120"
+  },
+  {
+    "class_name": "ejercicios.E22FactorialDeUnaCantidad",
+    "exercise": 22,
+    "input": "20\n",
+    "expected": "2432902008176640000"
+  },
+  {
+    "class_name": "ejercicios.E22FactorialDeUnaCantidad",
+    "exercise": 22,
+    "input": "21\n",
+    "expected": "Número no válido"
+  },
+  {
+    "class_name": "ejercicios.E23MenuDeConsultas",
+    "exercise": 23,
+    "input": "0\n",
+    "expected": "1 Saludar | 2 Cuadrado | 0 Salir\nFin"
+  },
+  {
+    "class_name": "ejercicios.E23MenuDeConsultas",
+    "exercise": 23,
+    "input": "1 2 -3 9 0\n",
+    "expected": "1 Saludar | 2 Cuadrado | 0 Salir\nHola\n1 Saludar | 2 Cuadrado | 0 Salir\n9\n1 Saludar | 2 Cuadrado | 0 Salir\nOpción no válida\n1 Saludar | 2 Cuadrado | 0 Salir\nFin"
+  },
+  {
+    "class_name": "ejercicios.E24AgendaDeTaller",
+    "exercise": 24,
+    "input": "2\n0\n",
+    "expected": "1 Añadir | 2 Listar | 3 Buscar | 0 Salir\nAgenda vacía\n1 Añadir | 2 Listar | 3 Buscar | 0 Salir\nFin"
+  },
+  {
+    "class_name": "ejercicios.E24AgendaDeTaller",
+    "exercise": 24,
+    "input": "1\nVega\n1\nvega\n3\nVEGA\n0\n",
+    "expected": "1 Añadir | 2 Listar | 3 Buscar | 0 Salir\nAñadido\n1 Añadir | 2 Listar | 3 Buscar | 0 Salir\nDuplicado\n1 Añadir | 2 Listar | 3 Buscar | 0 Salir\nPosición 0\n1 Añadir | 2 Listar | 3 Buscar | 0 Salir\nFin"
+  }
+]

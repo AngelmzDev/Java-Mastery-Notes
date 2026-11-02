@@ -1,0 +1,7 @@
+# Archivos compilados y resultados locales
+*.class
+out/
+build/
+.idea/
+*.iml
+__pycache__/
