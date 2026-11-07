@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/branding/logo.svg" alt="Logo de Java-Mastery-Notes" width="128" height="128">
+</p>
+
 # Java Mastery Notes · Java básico para DAM
 
 Apuntes para aprender desde cero, entender el razonamiento de los programas y practicar. El alcance actual llega desde el entorno y los tipos hasta **arrays unidimensionales**, siguiendo los contenidos de clases 2 a 8 descritos en el encargo. JDK de referencia: **23, sin funciones preview**.
