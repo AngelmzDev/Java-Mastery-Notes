@@ -16,6 +16,14 @@ No estaban disponibles en el repositorio ni entre los adjuntos consultados estos
 
 Por ello no se reconstruye una clase 1 ni se atribuyen las nuevas explicaciones al profesor. Si se incorporan esas notas, habrá que contrastar contenidos y estado de cada ejercicio; las ampliaciones didácticas de días 4 y 8 deberán distinguirse del contenido atribuido a clase.
 
+## Ampliación: arrays multidimensionales
+
+A petición del propietario, se incorpora una lección sobre arrays multidimensionales a partir del texto aportado en el chat. Se reformulan las explicaciones y ejemplos, se corrigen índices y sintaxis y se añaden filas irregulares, búsquedas y práctica propia. Esta ampliación queda fuera del alcance unidimensional del encargo inicial; no se atribuye a una clase concreta ni modifica el recuento original de 33 actividades y 24 aplicaciones.
+
+## Ampliación: Hashtable y HashMap
+
+A petición del propietario, se incorpora el bloque 12 sobre mapas a partir de los apuntes aportados en el chat. La redacción, los ejemplos y las tres actividades con soluciones son propios. Se introducen claves y valores, operaciones, Enumeration, Iterator y diferencias de sincronización y null. Esta ampliación añade tres actividades a las 33 originales y conserva las 24 aplicaciones previas. No se atribuye a una clase concreta.
+
 ## Etiquetas de los ejercicios
 
 Todos los nuevos programas y explicaciones son **didácticos propios**. Las 24 aplicaciones están resueltas aquí; las 33 actividades son propuestas de práctica con respuesta separada. El estado **corregido / planteado / pendiente en clase es no confirmado**, incluso cuando una solución propia compila y pasa sus pruebas.

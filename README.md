@@ -4,7 +4,7 @@
 
 # Java Mastery Notes · Java básico para DAM
 
-Apuntes para aprender desde cero, entender el razonamiento de los programas y practicar. El alcance actual llega desde el entorno y los tipos hasta **arrays unidimensionales**, siguiendo los contenidos de clases 2 a 8 descritos en el encargo. JDK de referencia: **23, sin funciones preview**.
+Apuntes para aprender desde cero, entender el razonamiento de los programas y practicar. La ruta de aprendizaje abarca el entorno, los tipos, el control de flujo y los **arrays unidimensionales**. Incluye ampliaciones sobre **arrays multidimensionales** y **mapas con Hashtable y HashMap**. JDK de referencia: **23, sin funciones preview**.
 
 ## Cómo estudiar
 
@@ -78,11 +78,12 @@ Los ejemplos son **didácticos propios** y no se atribuyen al profesor. Los apun
 - [Convertir bases con bucles y validación](docs/09-sistemas-numeracion/conversiones-con-bucles.md)
 - [Ejercicios del bloque: tres actividades](docs/09-sistemas-numeracion/ejercicios.md)
 
-### 10. [Arrays unidimensionales](docs/10-arrays/README.md)
+### 10. [Arrays](docs/10-arrays/README.md)
 
 - [Crear, acceder y recorrer arrays](docs/10-arrays/crear-y-recorrer.md)
 - [Buscar, contar, hallar extremos y elegir posiciones](docs/10-arrays/buscar-contar-y-seleccionar.md)
 - [Un gestor sencillo con capacidad fija](docs/10-arrays/gestor-con-capacidad-fija.md)
+- [Arrays multidimensionales: filas, columnas y recorridos](docs/10-arrays/arrays-multidimensionales.md)
 - [Ejercicios del bloque: tres actividades](docs/10-arrays/ejercicios.md)
 
 ### 11. [Git y buenas prácticas](docs/11-git-y-buenas-practicas/README.md)
@@ -91,6 +92,13 @@ Los ejemplos son **didácticos propios** y no se atribuyen al profesor. Los apun
 - [Organización, formato y nombres](docs/11-git-y-buenas-practicas/organizacion-y-legibilidad.md)
 - [Ejercicios del bloque: tres actividades](docs/11-git-y-buenas-practicas/ejercicios.md)
 
+### 12. [Mapas: Hashtable y HashMap](docs/12-mapas/README.md)
+
+- [Claves, valores y tablas hash](docs/12-mapas/claves-valores-y-hash.md)
+- [Hashtable: operaciones, Enumeration y eliminación con Iterator](docs/12-mapas/hashtable.md)
+- [HashMap: recorridos, contadores y diferencias con Hashtable](docs/12-mapas/hashmap.md)
+- [Tres ejercicios nuevos](docs/12-mapas/ejercicios.md) · [Soluciones razonadas](docs/12-mapas/soluciones.md)
+
 ## Ejercicios, soluciones y consulta
 
 - [Índice de 33 actividades por tema y 24 aplicaciones resueltas](ejercicios/README.md).
@@ -98,7 +106,39 @@ Los ejemplos son **didácticos propios** y no se atribuyen al profesor. Los apun
 - [Mapa de cobertura del encargo](docs/cobertura.md).
 - [Procedencia, límites y referencias oficiales](docs/procedencia-y-fuentes.md).
 
+El bloque de mapas añade **3 actividades con soluciones**, separadas de las 33 originales. Sus ejemplos cubren consultas por clave, actualizaciones, recorridos y eliminación por condición.
+
 Los ejercicios tienen contextos y datos renovados para practicar los mismos objetivos. Las soluciones están separadas de los enunciados. El número de soluciones propias no implica un nivel profesional ni que esos ejercicios se hayan corregido en clase.
+
+## Arrays multidimensionales
+
+Esta ampliación conecta los arrays unidimensionales con los bucles anidados. En Java, un array bidimensional es un array cuyas posiciones contienen referencias a otros arrays. Puede representar una tabla, aunque sus filas también pueden tener longitudes distintas.
+
+```java
+int[][] plazas = {
+    {6, 2, 9},
+    {4, 8, 3}
+};
+
+System.out.println(plazas[1][1]); // 8: segunda fila, segunda columna
+plazas[0][0] = 20;
+
+for (int fila = 0; fila < plazas.length; fila++) {
+    for (int columna = 0; columna < plazas[fila].length; columna++) {
+        System.out.printf("[%d][%d] = %d%n",
+                fila, columna, plazas[fila][columna]);
+    }
+}
+```
+
+- **Creación:** `new int[2][3]` reserva dos filas de tres enteros, inicialmente a cero.
+- **Acceso y modificación:** `plazas[fila][columna]` selecciona un elemento; ambos índices empiezan en cero.
+- **Tamaños:** `plazas.length` cuenta filas y `plazas[fila].length` cuenta elementos de la fila actual.
+- **Recorridos:** utiliza índices para trabajar con coordenadas o modificar posiciones; un `for-each` anidado permite leer valores.
+- **Búsquedas:** compara cada elemento y guarda la fila y columna de la coincidencia.
+- **Casos límite:** distingue filas vacías de filas `null` y comprueba los límites antes de acceder.
+
+Lee la [lección completa de arrays multidimensionales](docs/10-arrays/arrays-multidimensionales.md), con búsquedas, filas irregulares y práctica. Antes, repasa [crear y recorrer arrays](docs/10-arrays/crear-y-recorrer.md) y [bucles anidados](docs/07-bucles/anidacion-break-y-continue.md). Es una ampliación didáctica propia y no se atribuye a una clase concreta. Las 33 actividades y las 24 aplicaciones resueltas mantienen su recuento original.
 
 ## Material visual existente
 
@@ -107,7 +147,7 @@ Las galerías e imágenes anteriores se conservan como apoyo visual. La ruta de 
 - [Galería de conceptos base](00-Conceptos-Base/readme.md).
 - [Galería de control de flujo](01-Control-de-Flujo/README.md).
 
-No se añaden herencia, polimorfismo, colecciones, streams, recursividad desarrollada, bases de datos ni frameworks. Las clases, objetos y métodos se introducen solo lo necesario para entender estos programas.
+El bloque de mapas introduce las colecciones `Hashtable` y `HashMap`, la interfaz `Map` y los recorridos con `Enumeration`, `Map.Entry` e `Iterator`. La sincronización se explica de forma conceptual; no se desarrolla programación con hilos. No se añaden herencia desarrollada, polimorfismo avanzado, streams, recursividad desarrollada, bases de datos ni frameworks. Las clases, objetos y métodos se introducen solo lo necesario para entender estos programas.
 
 ## Compartir aprendizaje
 
