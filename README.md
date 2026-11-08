@@ -108,44 +108,12 @@ El bloque de mapas añade **3 actividades con soluciones**, separadas de las 33 
 
 Los ejercicios tienen contextos y datos renovados para practicar los mismos objetivos. Las soluciones están separadas de los enunciados. El número de soluciones propias no implica un nivel profesional ni que esos ejercicios se hayan corregido en clase.
 
-## Arrays multidimensionales
-
-Esta ampliación conecta los arrays unidimensionales con los bucles anidados. En Java, un array bidimensional es un array cuyas posiciones contienen referencias a otros arrays. Puede representar una tabla, aunque sus filas también pueden tener longitudes distintas.
-
-```java
-int[][] plazas = {
-    {6, 2, 9},
-    {4, 8, 3}
-};
-
-System.out.println(plazas[1][1]); // 8: segunda fila, segunda columna
-plazas[0][0] = 20;
-
-for (int fila = 0; fila < plazas.length; fila++) {
-    for (int columna = 0; columna < plazas[fila].length; columna++) {
-        System.out.printf("[%d][%d] = %d%n",
-                fila, columna, plazas[fila][columna]);
-    }
-}
-```
-
-- **Creación:** `new int[2][3]` reserva dos filas de tres enteros, inicialmente a cero.
-- **Acceso y modificación:** `plazas[fila][columna]` selecciona un elemento; ambos índices empiezan en cero.
-- **Tamaños:** `plazas.length` cuenta filas y `plazas[fila].length` cuenta elementos de la fila actual.
-- **Recorridos:** utiliza índices para trabajar con coordenadas o modificar posiciones; un `for-each` anidado permite leer valores.
-- **Búsquedas:** compara cada elemento y guarda la fila y columna de la coincidencia.
-- **Casos límite:** distingue filas vacías de filas `null` y comprueba los límites antes de acceder.
-
-Lee la [lección completa de arrays multidimensionales](docs/10-arrays/arrays-multidimensionales.md), con búsquedas, filas irregulares y práctica. Antes, repasa [crear y recorrer arrays](docs/10-arrays/crear-y-recorrer.md) y [bucles anidados](docs/07-bucles/anidacion-break-y-continue.md). Es una ampliación didáctica propia y no se atribuye a una clase concreta. Las 33 actividades y las 24 aplicaciones resueltas mantienen su recuento original.
-
 ## Material visual existente
 
 Las galerías e imágenes anteriores se conservan como apoyo visual. La ruta de texto anterior es la referencia para estudiar el alcance básico actual:
 
 - [Galería de conceptos base](00-Conceptos-Base/readme.md).
 - [Galería de control de flujo](01-Control-de-Flujo/README.md).
-
-El bloque de mapas introduce las colecciones `Hashtable` y `HashMap`, la interfaz `Map` y los recorridos con `Enumeration`, `Map.Entry` e `Iterator`. La sincronización se explica de forma conceptual; no se desarrolla programación con hilos. No se añaden herencia desarrollada, polimorfismo avanzado, streams, recursividad desarrollada, bases de datos ni frameworks. Las clases, objetos y métodos se introducen solo lo necesario para entender estos programas.
 
 ## Compartir aprendizaje
 
