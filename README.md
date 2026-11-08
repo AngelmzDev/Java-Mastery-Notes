@@ -4,8 +4,6 @@
 
 # Java Mastery Notes · Java básico para DAM
 
-Apuntes para aprender desde cero, entender el razonamiento de los programas y practicar. La ruta de aprendizaje abarca el entorno, los tipos, el control de flujo y los **arrays unidimensionales**. Incluye ampliaciones sobre **arrays multidimensionales** y **mapas con Hashtable y HashMap**. JDK de referencia: **23, sin funciones preview**.
-
 ## Cómo estudiar
 
 1. Lee un tema y predice sus ejemplos antes de ejecutarlos.
