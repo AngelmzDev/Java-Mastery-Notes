@@ -7,7 +7,7 @@
     "content": "node scripts/web-content.mjs",
     "build": "npm run content && astro build",
     "preview": "astro preview",
-    "test": "node --test scripts/web-content.test.mjs"
+    "test": "node --test scripts/web-content.test.mjs scripts/study-traces.test.mjs"
   },
   "engines": {
     "node": ">=22.12.0"

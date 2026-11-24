@@ -1,6 +1,10 @@
 # Procedencia, alcance y fuentes
 
-## Qué se ha utilizado
+## Actualización de la web
+
+La migración incorpora ahora los apuntes completos de los días 2–10 y el cuaderno integrado de colecciones, aportados al proyecto. Las páginas antiguas conservan su procedencia histórica: no se convierten automáticamente en contenido de clase. Las nuevas fichas cronológicas enlazan con las fuentes disponibles y diferencian las ampliaciones de los días 4 y 8 y de la guía de colecciones. Se han anonimizado nombres de ejemplo e identificadores de grabaciones; no se incluyen grabaciones, transcripciones originales ni libros completos.
+
+## Qué se utilizó en la versión anterior
 
 La organización parte del encargo aportado por el propietario: contenidos básicos de Programación de DAM, clases 2 a 8, hasta introducción a arrays unidimensionales. Se inspeccionaron el README y las galerías anteriores del repositorio y se conservaron sus PDF e imágenes.
 

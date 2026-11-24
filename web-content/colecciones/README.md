@@ -16,3 +16,10 @@ Ruta de aprendizaje:
 4. [Mapas](../../docs/12-mapas/README.md) — material previo del repositorio; Hashtable es una ampliación, no acreditada como lección de los días 9 y 10.
 
 La distinción formal entre List y ArrayList se trata como apoyo didáctico en la guía integrada, no como explicación desarrollada en el audio.
+
+## Material completo
+
+- [Cuaderno integrado de colecciones](guia-integrada.md): reúne ambas clases, el análisis del código de HashMap facilitado y las precisiones didácticas para el ejercicio del banco.
+- [Día 9 — apuntes completos](../clases/apuntes/dia-09.md).
+- [Día 10 — apuntes completos](../clases/apuntes/dia-10.md).
+- [Laboratorio de lógica](/Java-Mastery-Notes/laboratorio/trazas/).

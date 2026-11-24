@@ -12,7 +12,7 @@ const base = '/Java-Mastery-Notes/';
 const repository = 'https://github.com/AngelmzDev/Java-Mastery-Notes/blob/main/';
 const processor = unified().use(remarkParse).use(remarkGfm).use(remarkStringify);
 const posix = path.posix;
-const markdown = /\.md$/i;
+const markdown = /\.mdx?$/i;
 
 export function routeFor(file) {
   const name = file.replace(/\\/g, '/');
@@ -22,7 +22,7 @@ export function routeFor(file) {
     .replace(/^docs\//, 'referencia/')
     .replace(/^web-content\//, '')
     .replace(/^(00-Conceptos-Base|01-Control-de-Flujo)\//, 'material/$1/');
-  route = route.replace(/(^|\/)readme\.md$/i, '$1index').replace(/\.md$/i,'').toLowerCase();
+  route = route.replace(/(^|\/)readme\.md$/i, '$1index').replace(/\.mdx?$/i,'').toLowerCase();
   return route;
 }
 
@@ -59,14 +59,21 @@ export function convert(source, text, routes) {
   const h1 = tree.children.find(n=>n.type==='heading' && n.depth===1);
   const title = h1 ? titleText(h1) : posix.basename(source,'.md');
   if (h1) tree.children.splice(tree.children.indexOf(h1),1);
+  // Imported class notes use H1 for numbered sections. Starlight supplies the page H1.
+  if (tree.children.some(n=>n.type==='heading' && n.depth===1)) {
+    visit(tree,'heading',n=>{ n.depth=Math.min(6,n.depth+1); });
+  }
   visit(tree,['link','image','definition'],node=>{
     node.url = rewriteUrl(node.url,source,routes,node.type==='image');
   });
   // Preserve existing explanations. The old repo's attribution remains intact.
   const provenance = source.startsWith('web-content/') ? '' :
     '\n> **Procedencia:** material del repositorio anterior. Consulta sus notas de alcance; no se atribuye automáticamente al profesor.\n';
-  const home = source === 'README.md' ? '\n## Rutas de estudio por clase\n\n- [Apuntes de los días 2–10]('+base+'clases/)\n- [Colecciones y streams]('+base+'colecciones/)\n' : ''; 
-  return '---\ntitle: '+JSON.stringify(title)+'\n---\n'+home+provenance+'\n'+processor.stringify(tree);
+  const day = source.match(/^web-content\/clases\/dia-(\d{2})\.md$/);
+  const full = day && routes.get('web-content/clases/apuntes/dia-'+day[1]+'.md');
+  const related = full ? '\n[Leer apuntes completos de esta clase]('+pageUrl(full)+')\n' : '';
+  const home = source === 'README.md' ? '\n## Rutas de estudio por clase\n\n- [Apuntes de los días 2–10]('+base+'clases/)\n- [Colecciones y streams]('+base+'colecciones/)\n- [Laboratorio de lógica interactivo]('+base+'laboratorio/trazas/)\n' : ''; 
+  return '---\ntitle: '+JSON.stringify(title)+'\n---\n'+home+related+provenance+'\n'+processor.stringify(tree);
 }
 async function main() {
   const inputs = ['README.md',...(await Promise.all(['docs','ejercicios','00-Conceptos-Base','01-Control-de-Flujo','web-content'].map(walk))).flat()]
@@ -76,10 +83,11 @@ async function main() {
   const output=path.join(root,'src/content/docs');
   await fs.rm(output,{recursive:true,force:true});
   for(const [source,route] of routes) {
-    const target=path.join(output,route+'.md');
+    const extension=source.endsWith('.mdx') ? '.mdx' : '.md';
+    const target=path.join(output,route+extension);
     await fs.mkdir(path.dirname(target),{recursive:true});
     const text=await fs.readFile(path.join(root,source),'utf8');
-    await fs.writeFile(target,convert(source,text,routes));
+    await fs.writeFile(target,extension==='.mdx' ? text : convert(source,text,routes));
   }
   console.log('Páginas Markdown generadas:',routes.size);
 }

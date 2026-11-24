@@ -20,3 +20,16 @@ test('frontmatter, código y procedencia',()=>{
  assert.match(output,/Procedencia/);
  assert.match(output,/\/Java-Mastery-Notes\/temario\/07-bucles\/for-y-recorridos\//);
 });
+
+test('los apuntes importados no repiten el H1 y preservan el código',()=>{
+ const output=convert('web-content/clases/apuntes/dia-02.md','# Apuntes\n\n# 1. Variables\n\n## 1.1. Tipos\n\n```java\nint n = 3;\n```',routes);
+ assert.match(output,/^## 1\. Variables$/m);
+ assert.match(output,/^### 1\.1\. Tipos$/m);
+ assert.match(output,/int n = 3;/);
+});
+test('las fichas enlazan con sus apuntes y se admiten rutas MDX',()=>{
+ const map=new Map([['web-content/clases/apuntes/dia-02.md','clases/apuntes/dia-02']]);
+ const output=convert('web-content/clases/dia-02.md','# Clase 2\n\nContenido',map);
+ assert.match(output,/\/Java-Mastery-Notes\/clases\/apuntes\/dia-02\//);
+ assert.equal(routeFor('web-content/laboratorio/trazas.mdx'),'laboratorio/trazas');
+});
