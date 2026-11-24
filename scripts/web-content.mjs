@@ -17,6 +17,7 @@ const markdown = /\.mdx?$/i;
 export function routeFor(file) {
   const name = file.replace(/\\/g, '/');
   if (name === 'README.md') return 'index';
+  if (name === 'WEB.md') return 'referencia/desarrollo-web';
   let route = name
     .replace(/^docs\/(\d{2}-[^/]+)\//, 'temario/$1/')
     .replace(/^docs\//, 'referencia/')
@@ -76,7 +77,7 @@ export function convert(source, text, routes) {
   return '---\ntitle: '+JSON.stringify(title)+'\n---\n'+home+related+provenance+'\n'+processor.stringify(tree);
 }
 async function main() {
-  const inputs = ['README.md',...(await Promise.all(['docs','ejercicios','00-Conceptos-Base','01-Control-de-Flujo','web-content'].map(walk))).flat()]
+  const inputs = ['README.md','WEB.md',...(await Promise.all(['docs','ejercicios','00-Conceptos-Base','01-Control-de-Flujo','web-content'].map(walk))).flat()]
     .filter(p=>markdown.test(p) && !p.startsWith('docs/superpowers/') && !p.startsWith('docs/branding/'));
   const routes=new Map(inputs.map(p=>[p,routeFor(p)]));
   if(new Set(routes.values()).size!==routes.size) throw Error('Rutas duplicadas');

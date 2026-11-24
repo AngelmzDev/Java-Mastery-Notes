@@ -5,6 +5,9 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+concurrency:
+  group: web-check-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -18,6 +21,9 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
+      - run: npm run check:links
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:web
       - uses: actions/upload-artifact@v4
         with:
           name: java-mastery-notes-site
