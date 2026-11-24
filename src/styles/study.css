@@ -1,0 +1,18 @@
+:root {
+  --sl-color-accent-low: #d8e9ff;
+  --sl-color-accent: #1e5da8;
+  --sl-color-accent-high: #123761;
+  --sl-content-width: 52rem;
+  --sl-font: system-ui, sans-serif;
+}
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #172f4f;
+  --sl-color-accent: #82b6ff;
+  --sl-color-accent-high: #d3e7ff;
+}
+.sl-markdown-content { line-height: 1.75; }
+.sl-markdown-content h2 { margin-top: 2.5rem; }
+.sl-markdown-content pre { border-radius: .6rem; }
+.sl-markdown-content table { font-variant-numeric: tabular-nums; }
+.sl-markdown-content details { border: 1px solid var(--sl-color-gray-5); padding: .85rem 1rem; border-radius:.55rem; }
+.sl-markdown-content details summary { cursor: pointer; font-weight: 600; }
