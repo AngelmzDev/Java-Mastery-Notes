@@ -1,0 +1,38 @@
+---
+interface Props { prompt:string; options:string[]; correct:number; feedback:string; }
+const {prompt,options,correct,feedback}=Astro.props;
+---
+<practice-card data-correct={correct} data-feedback={feedback}>
+  <fieldset>
+    <legend>{prompt}</legend>
+    {options.map((option,index)=><label><input type="radio" value={index} name="answer" /> <span>{option}</span></label>)}
+    <button type="button" data-check>Comprobar respuesta</button>
+    <p data-result aria-live="polite"></p>
+  </fieldset>
+</practice-card>
+<script>
+  let counter=0;
+  class PracticeCard extends HTMLElement{
+    connectedCallback(){
+      if(this.dataset.ready)return;
+      this.dataset.ready='true';
+      const name='practice-answer-'+(++counter);
+      this.querySelectorAll<HTMLInputElement>('input').forEach(input=>input.name=name);
+      const result=this.querySelector<HTMLElement>('[data-result]')!;
+      this.querySelector('[data-check]')!.addEventListener('click',()=>{
+        const selected=this.querySelector<HTMLInputElement>('input:checked');
+        if(!selected){result.textContent='Selecciona una respuesta.';return;}
+        result.textContent=Number(selected.value)===Number(this.dataset.correct)?'Correcto. '+this.dataset.feedback:'Todavía no. '+this.dataset.feedback;
+      });
+    }
+  }
+  if(!customElements.get('practice-card'))customElements.define('practice-card',PracticeCard);
+</script>
+<style>
+  fieldset{display:grid;gap:.65rem;border:1px solid var(--sl-color-gray-5);border-radius:.65rem;padding:1rem}
+  legend{font-weight:650;padding:.2rem}
+  label{display:flex;gap:.55rem;align-items:flex-start}
+  input{margin-top:.35rem}
+  button{justify-self:start;background:var(--sl-color-accent-low);color:var(--sl-color-text);font:inherit;padding:.4rem .7rem;border-radius:.35rem;border:1px solid var(--sl-color-accent);cursor:pointer}
+  p{margin:0;min-height:1.4rem}
+</style>

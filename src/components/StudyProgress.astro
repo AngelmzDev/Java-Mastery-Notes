@@ -1,0 +1,67 @@
+---
+interface Item {key:string; title:string; href:string}
+interface Props {items:Item[]}
+const {items}=Astro.props;
+---
+<study-progress>
+  <section class="progress-summary" aria-label="Resumen de progreso" aria-live="polite">
+    <div><small>Pendientes</small><strong data-count="pending">{items.length}</strong></div>
+    <div><small>En estudio</small><strong data-count="studying">0</strong></div>
+    <div><small>Dominados</small><strong data-count="done">0</strong></div>
+  </section>
+  <progress value="0" max={items.length} aria-label="Bloques dominados"></progress>
+  <p data-status aria-live="polite">Los cambios se guardan en este navegador.</p>
+  <div class="progress-list">
+    {items.map(item=><div class="progress-row">
+      <a href={item.href}>{item.title}</a>
+      <select data-key={item.key} aria-label={'Estado de '+item.title}>
+        <option value="pending">Pendiente</option><option value="studying">En estudio</option><option value="done">Dominado</option>
+      </select>
+    </div>)}
+  </div>
+  <noscript>Activa JavaScript para guardar tu progreso.</noscript>
+</study-progress>
+<script>
+  const key='java-mastery-notes:study-progress:v1';
+  const allowed=new Set(['pending','studying','done']);
+  class StudyProgress extends HTMLElement{
+    connectedCallback(){
+      if(this.dataset.ready)return;
+      this.dataset.ready='true';
+      const selects=[...this.querySelectorAll<HTMLSelectElement>('select[data-key]')];
+      const status=this.querySelector<HTMLElement>('[data-status]')!;
+      let stored:Record<string,string>={};
+      try{
+        const data=JSON.parse(localStorage.getItem(key)||'{}');
+        if(data&&typeof data==='object'&&!Array.isArray(data))stored=data;
+      }catch{status.textContent='El navegador no permite recuperar el progreso.';}
+      const render=()=>{
+        const counts:Record<string,number>={pending:0,studying:0,done:0};
+        selects.forEach(s=>counts[s.value]++);
+        Object.entries(counts).forEach(([k,v])=>{this.querySelector('[data-count="'+k+'"]')!.textContent=String(v);});
+        this.querySelector<HTMLProgressElement>('progress')!.value=counts.done;
+      };
+      for(const s of selects){
+        const id=s.dataset.key!;
+        s.value=allowed.has(stored[id])?stored[id]:'pending';
+        s.addEventListener('change',()=>{
+          stored[id]=s.value;
+          try{localStorage.setItem(key,JSON.stringify(stored));status.textContent='Progreso guardado en este navegador.';}
+          catch{status.textContent='No se pudo guardar. El progreso solo se mantiene en esta página.';}
+          render();
+        });
+      }
+      render();
+    }
+  }
+  if(!customElements.get('study-progress'))customElements.define('study-progress',StudyProgress);
+</script>
+<style>
+  .progress-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
+  .progress-summary div{display:grid;gap:.15rem;border:1px solid var(--sl-color-gray-5);padding:.75rem;border-radius:.5rem}
+  .progress-summary strong{font-size:1.6rem;font-variant-numeric:tabular-nums}
+  progress{width:100%;margin:1rem 0 0;accent-color:var(--sl-color-accent)}
+  .progress-list{display:grid;gap:.5rem}
+  .progress-row{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;padding:.65rem 0;border-bottom:1px solid var(--sl-color-gray-5)}
+  select{font:inherit;color:var(--sl-color-text);background:var(--sl-color-bg);border:1px solid var(--sl-color-gray-4);border-radius:.35rem;padding:.35rem;min-width:8.5rem}
+</style>

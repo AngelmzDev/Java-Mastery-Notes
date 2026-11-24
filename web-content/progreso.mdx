@@ -1,0 +1,27 @@
+---
+title: Mi progreso
+description: Registra los bloques pendientes, en estudio y dominados.
+---
+import StudyProgress from '../../components/StudyProgress.astro';
+
+Marca cada bloque según tu nivel real: **pendiente** si aún no lo has trabajado, **en estudio** si comprendes la teoría pero necesitas practicar, y **dominado** cuando puedes resolver problemas nuevos sin consultar primero una solución.
+
+El progreso se guarda únicamente en este navegador. No necesita cuenta ni envía información a un servidor.
+
+<StudyProgress items={[
+  {key:'fundamentos',title:'Entorno y fundamentos',href:'/Java-Mastery-Notes/temario/01-fundamentos/'},
+  {key:'variables',title:'Variables y tipos',href:'/Java-Mastery-Notes/temario/02-variables-y-tipos/'},
+  {key:'entrada',title:'Entrada y salida',href:'/Java-Mastery-Notes/temario/03-entrada-y-salida/'},
+  {key:'operadores',title:'Operadores y expresiones',href:'/Java-Mastery-Notes/temario/04-operadores/'},
+  {key:'strings',title:'Cadenas y caracteres',href:'/Java-Mastery-Notes/temario/05-strings/'},
+  {key:'condiciones',title:'Condicionales',href:'/Java-Mastery-Notes/temario/06-condicionales/'},
+  {key:'bucles',title:'Bucles',href:'/Java-Mastery-Notes/temario/07-bucles/'},
+  {key:'logica',title:'Lógica de programación',href:'/Java-Mastery-Notes/temario/08-logica-programacion/'},
+  {key:'bases',title:'Sistemas de numeración',href:'/Java-Mastery-Notes/temario/09-sistemas-numeracion/'},
+  {key:'arrays',title:'Arrays',href:'/Java-Mastery-Notes/temario/10-arrays/'},
+  {key:'git',title:'Git y buenas prácticas',href:'/Java-Mastery-Notes/temario/11-git-y-buenas-practicas/'},
+  {key:'mapas',title:'Mapas',href:'/Java-Mastery-Notes/temario/12-mapas/'},
+  {key:'colecciones',title:'Colecciones, lambdas y streams',href:'/Java-Mastery-Notes/colecciones/'},
+]} />
+
+[Practicar en el laboratorio](/Java-Mastery-Notes/laboratorio/trazas/)

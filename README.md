@@ -4,6 +4,10 @@
 
 # Java Mastery Notes · Java básico para DAM
 
+## Web de estudio
+
+La documentación se genera con Astro + Starlight. Consulta [cómo ejecutar y ampliar la web](WEB.md), el [índice cronológico de clases](web-content/clases/README.md) y el [laboratorio interactivo de lógica](web-content/laboratorio/trazas.mdx).
+
 ## Cómo estudiar
 
 1. Lee un tema y predice sus ejemplos antes de ejecutarlos.
@@ -12,7 +16,7 @@
 4. Ejecuta casos normales y límites; después compara el razonamiento con la solución.
 5. Vuelve al tema relacionado cuando una instrucción no tenga un propósito claro.
 
-Los ejemplos son **didácticos propios** y no se atribuyen al profesor. Los apuntes diarios originales mencionados en el encargo no estaban disponibles: no se afirma qué ejercicios fueron corregidos, planteados o pendientes en clase. [Procedencia, alcance y fuentes](docs/procedencia-y-fuentes.md).
+Los ejemplos del repositorio anterior son **didácticos propios** y no se atribuyen al profesor. La nueva web incluye también los apuntes aportados al proyecto (días 2–10) y sus advertencias de procedencia. [Procedencia, alcance y fuentes](docs/procedencia-y-fuentes.md).
 
 ## Índice de aprendizaje
 

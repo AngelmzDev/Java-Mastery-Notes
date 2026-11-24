@@ -1,0 +1,31 @@
+name: Verify documentation
+on:
+  push:
+    branches: [web-migration]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+concurrency:
+  group: web-check-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+      - run: npm run check:links
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:web
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() && hashFiles('dist/index.html') != '' }}
+        with:
+          name: java-mastery-notes-site
+          path: dist

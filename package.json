@@ -1,0 +1,30 @@
+{
+  "name": "java-mastery-notes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run content && astro dev",
+    "content": "node scripts/web-content.mjs",
+    "build": "npm run content && astro build",
+    "preview": "astro preview",
+    "test": "node --test scripts/web-content.test.mjs scripts/study-traces.test.mjs",
+    "test:web": "playwright test --config=playwright.config.mjs",
+    "check:links": "python3 scripts/verify-web.py --strict-fragments"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "@astrojs/starlight": "^0.35.0",
+    "sharp": "^0.34.3",
+    "unified": "^11.0.5",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "remark-gfm": "^4.0.1",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0"
+  }
+}
