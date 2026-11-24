@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "test": "node --test scripts/web-content.test.mjs scripts/study-traces.test.mjs",
     "test:web": "playwright test --config=playwright.config.mjs",
-    "check:links": "python3 scripts/verify-web.py"
+    "check:links": "python3 scripts/verify-web.py --strict-fragments"
   },
   "engines": {
     "node": ">=22.12.0"

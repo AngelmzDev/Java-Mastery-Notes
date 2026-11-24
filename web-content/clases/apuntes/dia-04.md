@@ -18,7 +18,7 @@
 2. [Variables, tipos y constantes](#2-variables-tipos-y-constantes)
 3. [Operadores aritméticos](#3-operadores-aritméticos)
 4. [División entera, división real y casteo](#4-división-entera-división-real-y-casteo)
-5. [Módulo `%`](#5-módulo-)
+5. [Módulo `%`](#5-módulo)
 6. [Operadores de asignación](#6-operadores-de-asignación)
 7. [Salida formateada con `printf`](#7-salida-formateada-con-printf)
 8. [Métodos y clase `Math`](#8-métodos-y-clase-math)

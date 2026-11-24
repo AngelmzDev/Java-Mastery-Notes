@@ -25,6 +25,6 @@ La raíz de producción es /Java-Mastery-Notes/. Starlight aporta búsqueda Page
 
 ## Publicar
 
-La rama web-migration permite revisar la migración sin cambiar main. GitHub Actions ejecuta pruebas unitarias, build, comprobación de rutas y pruebas en Chromium, y guarda dist como artefacto. Los enlaces con ancla heredada se informan por separado; verificar antes de una publicación.
+La rama web-migration permite revisar la migración sin cambiar main. GitHub Actions ejecuta pruebas unitarias, build, comprobación de rutas y pruebas en Chromium, y guarda dist como artefacto. La comprobación incluye enlaces internos y anclas. El entorno de navegador utiliza Ubuntu 24.04 para mantener compatibilidad con Playwright.
 
 Tras aprobar y fusionar la rama, seleccionar Settings > Pages > Source: GitHub Actions. Ejecutar manualmente Publish Java Mastery Notes en main. Este workflow no publica desde ramas de desarrollo.

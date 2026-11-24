@@ -34,7 +34,7 @@
 16. [Primera explicación de las funciones lambda](#16-primera-explicación-de-las-funciones-lambda)
 17. [`Consumer`, funciones anónimas y callbacks](#17-consumer-funciones-anónimas-y-callbacks)
 18. [Recorrido con `forEach` y lambda](#18-recorrido-con-foreach-y-lambda)
-19. [Referencias a métodos con `::`](#19-referencias-a-métodos-con-)
+19. [Referencias a métodos con `::`](#19-referencias-a-métodos-con)
 20. [Otras operaciones mencionadas y contenidos aplazados](#20-otras-operaciones-mencionadas-y-contenidos-aplazados)
 21. [Ejemplo de conjunto de operaciones de clase](#21-ejemplo-de-conjunto-de-operaciones-de-clase)
 22. [Conceptos que debo saber explicar](#22-conceptos-que-debo-saber-explicar)
