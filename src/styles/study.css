@@ -95,6 +95,51 @@ h1#_top { font-size: clamp(2rem, 4.5vw, 2.9rem); line-height: 1.1; }
 .sidebar-content a { border-radius: 8px; }
 .sidebar-content a[aria-current='page'] { font-weight: 650; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); }
 
+/* ---------- Color de apoyo: seis tonos pastel que se reparten por el sitio ---------- */
+:root {
+  --h-coral: #d4552f; --h-amber: #b87a0c; --h-green: #36874f; --h-teal: #17808a; --h-blue: #356cc0; --h-rose: #c0476a;
+  --sl-color-purple-low: #d3eef0; --sl-color-purple: #17808a; --sl-color-purple-high: #0b3d42; /* los avisos "tip" pasan de violeta a verde azulado */
+}
+:root[data-theme='dark'] {
+  --h-coral: #f28b66; --h-amber: #ebbd4f; --h-green: #72d092; --h-teal: #55c9d1; --h-blue: #82b2f2; --h-rose: #f28cab;
+  --sl-color-purple-low: #123238; --sl-color-purple: #55c9d1; --sl-color-purple-high: #c6eef1;
+}
+.card-grid > :nth-child(6n+1), .top-level > :nth-child(6n+1) { --cc: var(--h-coral); }
+.card-grid > :nth-child(6n+2), .top-level > :nth-child(6n+2) { --cc: var(--h-amber); }
+.card-grid > :nth-child(6n+3), .top-level > :nth-child(6n+3) { --cc: var(--h-green); }
+.card-grid > :nth-child(6n+4), .top-level > :nth-child(6n+4) { --cc: var(--h-teal); }
+.card-grid > :nth-child(6n+5), .top-level > :nth-child(6n+5) { --cc: var(--h-blue); }
+.card-grid > :nth-child(6n+6), .top-level > :nth-child(6n+6) { --cc: var(--h-rose); }
+
+/* Tarjetas de la portada: tinte y filo superior de su color */
+.sl-link-card { --cc: var(--sl-color-accent); background: color-mix(in srgb, var(--cc) 11%, var(--sl-color-bg-sidebar)); border-color: color-mix(in srgb, var(--cc) 28%, var(--sl-color-hairline)); border-top: 3px solid var(--cc); }
+.sl-link-card:hover { border-color: var(--cc); background: color-mix(in srgb, var(--cc) 17%, var(--sl-color-bg-sidebar)); }
+.sl-link-card .title { color: var(--sl-color-white); }
+.sl-link-card .icon { color: var(--cc); }
+
+/* Menú lateral: punto de color por grupo */
+.sidebar-content .large::before { content: ''; display: inline-block; width: .5rem; height: .5rem; border-radius: 50%; margin-inline-end: .55rem; vertical-align: .08em; background: var(--cc, var(--sl-color-accent)); }
+.sidebar-content a[aria-current='page'] { background: color-mix(in srgb, var(--cc, var(--sl-color-accent)) 22%, transparent); color: var(--sl-color-white); }
+
+/* Contenido: títulos, citas, tablas */
+.sl-markdown-content .sl-heading-wrapper.level-h2 { border-bottom: 2px solid color-mix(in srgb, var(--sl-color-accent) 40%, var(--sl-color-hairline)); }
+.sl-markdown-content h3 { color: var(--sl-color-accent-high); }
+:root[data-theme='dark'] .sl-markdown-content h3 { color: var(--sl-color-accent); }
+.sl-markdown-content blockquote { border-inline-start: 4px solid var(--sl-color-accent); background: var(--sl-color-accent-low); border-radius: 0 var(--st-radius) var(--st-radius) 0; padding: .6rem 1rem; }
+.sl-markdown-content tbody tr:nth-child(even) { background: color-mix(in srgb, var(--sl-color-accent) 6%, transparent); }
+.sl-markdown-content strong { color: var(--sl-color-white); }
+.sl-markdown-content ol > li::marker, .sl-markdown-content ul > li::marker { color: var(--sl-color-accent); font-weight: 700; }
+
+/* Portada: fondo con manchas suaves y título con degradado */
+:root[data-has-hero] body {
+  background-image:
+    radial-gradient(42rem 24rem at 12% -4rem, color-mix(in srgb, var(--h-coral) 22%, transparent), transparent 70%),
+    radial-gradient(40rem 22rem at 88% 2rem, color-mix(in srgb, var(--h-teal) 20%, transparent), transparent 70%),
+    radial-gradient(36rem 20rem at 50% 28rem, color-mix(in srgb, var(--h-amber) 12%, transparent), transparent 70%);
+  background-repeat: no-repeat;
+}
+.hero h1 { background: linear-gradient(110deg, var(--h-coral), var(--h-amber) 45%, var(--h-teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
 @media (prefers-reduced-motion: reduce) {
   .sl-link-card, .sl-link-button { transition: none; }
   .sl-link-card:hover { transform: none; }
