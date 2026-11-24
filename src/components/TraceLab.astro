@@ -1,0 +1,102 @@
+---
+const { values = [3,-2,0,5,1] } = Astro.props;
+---
+<trace-lab data-values={JSON.stringify(values)}>
+  <section class="trace-panel" aria-label="Simulador de lógica">
+    <label>
+      <span>Patrón de resolución</span>
+      <select data-mode>
+        <option value="sum">Acumulador — sumar valores</option>
+        <option value="positive">Contador — contar positivos</option>
+        <option value="max">Máximo — seleccionar el mayor</option>
+      </select>
+    </label>
+    <p data-explanation>La suma empieza en cero y conserva el resultado de cada vuelta.</p>
+    <div class="trace-values" data-values-view aria-label="Valores del array">
+      {values.map((v:number,i:number)=><span data-index={i}><small>{i}</small><strong>{v}</strong></span>)}
+    </div>
+    <div class="trace-status" aria-live="polite" aria-atomic="true">
+      <div><small>Iteraciones</small><strong data-step>0 / 0</strong></div>
+      <div><small>Valor de la variable</small><strong data-current>0</strong></div>
+    </div>
+    <pre class="trace-code"><code data-code></code></pre>
+    <div class="trace-controls">
+      <button type="button" data-reset>Reiniciar</button>
+      <button type="button" data-prev disabled>Anterior</button>
+      <button type="button" data-next>Siguiente paso</button>
+    </div>
+    <p data-message aria-live="polite"></p>
+    <div class="trace-scroll">
+      <table>
+        <caption>Traza de ejecución</caption>
+        <thead><tr><th>Índice</th><th>Valor</th><th>Antes</th><th>Después</th></tr></thead>
+        <tbody data-rows></tbody>
+      </table>
+    </div>
+    <noscript>Activa JavaScript para avanzar por las iteraciones. La explicación y los ejemplos de la lección siguen disponibles.</noscript>
+  </section>
+</trace-lab>
+<script>
+  import { buildTrace, initialValue } from '../lib/study-traces.mjs';
+  const patterns = {
+    sum:{explanation:'La suma empieza en cero. En cada vuelta se añade el valor actual.', code:'int suma = 0;\nfor (int i = 0; i < numeros.length; i++) {\n    suma += numeros[i];\n}'},
+    positive:{explanation:'El contador empieza en cero y solo cambia si el número es positivo.', code:'int cantidad = 0;\nfor (int i = 0; i < numeros.length; i++) {\n    if (numeros[i] > 0) {\n        cantidad++;\n    }\n}'},
+    max:{explanation:'El máximo empieza en el primer elemento; el recorrido continúa desde el índice 1.', code:'int maximo = numeros[0];\nfor (int i = 1; i < numeros.length; i++) {\n    if (numeros[i] > maximo) {\n        maximo = numeros[i];\n    }\n}'}
+  };
+  class TraceLab extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready='true';
+      const values = JSON.parse(this.dataset.values || '[]');
+      const select = this.querySelector<HTMLSelectElement>('[data-mode]')!;
+      const next = this.querySelector<HTMLButtonElement>('[data-next]')!;
+      const prev = this.querySelector<HTMLButtonElement>('[data-prev]')!;
+      const reset = this.querySelector<HTMLButtonElement>('[data-reset]')!;
+      const rows = this.querySelector<HTMLElement>('[data-rows]')!;
+      const set = (selector:string,value:unknown) => {this.querySelector(selector)!.textContent=String(value);};
+      let step=0;
+      const render=()=>{
+        const mode=select.value as keyof typeof patterns;
+        const trace=buildTrace(mode,values);
+        const row=trace[step-1];
+        set('[data-explanation]',patterns[mode].explanation);
+        set('[data-code]',patterns[mode].code);
+        set('[data-step]',step+' / '+trace.length);
+        set('[data-current]',row ? row.after : initialValue(mode,values)??'Sin datos');
+        set('[data-message]',step===0?'Estado inicial, antes del bucle.':step===trace.length?'Última iteración: el resultado está disponible fuera del bucle.':row.changed?'La variable se ha actualizado.':'La variable conserva su valor.');
+        next.disabled=step>=trace.length;prev.disabled=step===0;
+        this.querySelectorAll<HTMLElement>('[data-index]').forEach(el=>el.classList.toggle('trace-active',!!row&&Number(el.dataset.index)===row.index));
+        rows.replaceChildren();
+        for(const r of trace.slice(0,step)){
+          const tr=document.createElement('tr');
+          for(const value of [r.index,r.value,r.before,r.after]){const td=document.createElement('td');td.textContent=String(value);tr.append(td);}
+          rows.append(tr);
+        }
+      };
+      next.addEventListener('click',()=>{step=Math.min(step+1,buildTrace(select.value,values).length);render();});
+      prev.addEventListener('click',()=>{step=Math.max(0,step-1);render();});
+      reset.addEventListener('click',()=>{step=0;render();});
+      select.addEventListener('change',()=>{step=0;render();});
+      render();
+    }
+  }
+  if(!customElements.get('trace-lab'))customElements.define('trace-lab',TraceLab);
+</script>
+<style>
+  .trace-panel{border:1px solid var(--sl-color-gray-5);border-radius:.8rem;padding:clamp(.8rem,3vw,1.5rem);display:grid;gap:1rem;background:var(--sl-color-bg);}
+  .trace-panel label{display:grid;gap:.4rem;font-weight:600}
+  .trace-panel select,.trace-panel button{font:inherit;border:1px solid var(--sl-color-gray-4);border-radius:.35rem;padding:.45rem .7rem;color:var(--sl-color-text);background:var(--sl-color-bg)}
+  .trace-panel button:not(:disabled){cursor:pointer}
+  .trace-panel button:disabled{opacity:.45}
+  .trace-panel [data-next]:not(:disabled){background:var(--sl-color-accent-low);border-color:var(--sl-color-accent);font-weight:650}
+  .trace-values,.trace-status,.trace-controls{display:flex;flex-wrap:wrap;gap:.6rem}
+  .trace-values span,.trace-status div{border:1px solid var(--sl-color-gray-5);border-radius:.4rem;padding:.5rem .8rem;display:grid;min-width:3.3rem;text-align:center}
+  .trace-values span.trace-active{background:var(--sl-color-accent-low);border-color:var(--sl-color-accent)}
+  .trace-status div{flex:1;text-align:left}
+  .trace-status strong{font-size:1.55rem;font-variant-numeric:tabular-nums}
+  .trace-code{white-space:pre;overflow-x:auto;margin:0}
+  .trace-scroll{overflow-x:auto}
+  .trace-scroll table{width:100%;margin:0}
+  .trace-scroll caption{text-align:left;font-weight:600;padding:.4rem}
+  .trace-panel p{margin:0}
+</style>

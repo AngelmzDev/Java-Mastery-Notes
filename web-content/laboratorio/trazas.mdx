@@ -1,0 +1,32 @@
+---
+title: Laboratorio de trazas
+description: Simula acumuladores, contadores y máximos paso a paso.
+---
+import TraceLab from '../../../components/TraceLab.astro';
+import PracticeCard from '../../../components/PracticeCard.astro';
+
+Este laboratorio es **apoyo didáctico propio** basado en los patrones trabajados en las clases 6–8. No reproduce una demostración literal del profesor.
+
+## Simula antes de escribir código
+
+Elige un patrón y avanza una vuelta cada vez. Observa qué dato se lee, qué variable cambia y qué valor permanece disponible para la siguiente iteración.
+
+<TraceLab values={[3,-2,0,5,1]} />
+
+## Caso límite: números negativos
+
+Predice el máximo antes de ejecutar. Comprueba por qué no sirve inicializarlo a cero.
+
+<TraceLab values={[-7,-3,-9]} />
+
+## Comprueba tu razonamiento
+
+<PracticeCard prompt="¿Dónde debe declararse un acumulador que se utiliza al terminar el bucle?" options={['Dentro del for, inicializado a cero en cada vuelta','Antes del for, inicializado una sola vez','Después del for']} correct={1} feedback="Debe existir antes de comenzar el recorrido, conservar el estado entre vueltas y seguir accesible al final." />
+
+<PracticeCard prompt="¿Dónde se coloca el cálculo de la media si solo queremos mostrarla una vez?" options={['Después de leer y acumular todos los datos','Dentro del bucle, antes de acumular','Antes de pedir los datos']} correct={0} feedback="La suma y la cantidad deben estar completas. Comprueba que la cantidad sea mayor que cero." />
+
+## Continúa estudiando
+
+- [Contadores, acumuladores y extremos](/Java-Mastery-Notes/temario/08-logica-programacion/contadores-acumuladores-y-extremos/)
+- [Colocar instrucciones y combinar estructuras](/Java-Mastery-Notes/laboratorio/colocacion/)
+- [Apuntes completos de la clase 7](/Java-Mastery-Notes/clases/apuntes/dia-07/)
