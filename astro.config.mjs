@@ -27,6 +27,7 @@ export default defineConfig({
       }))},
       {label:'Apuntes por clase',autogenerate:{directory:'clases'}},
       {label:'Laboratorio de lógica',autogenerate:{directory:'laboratorio'}},
+      {label:'Mi progreso',slug:'progreso'},
       {label:'Colecciones y streams',autogenerate:{directory:'colecciones'}},
       {label:'Ejercicios',collapsed:true,autogenerate:{directory:'ejercicios'}},
       {label:'Referencia y procedencia',collapsed:true,autogenerate:{directory:'referencia'}},

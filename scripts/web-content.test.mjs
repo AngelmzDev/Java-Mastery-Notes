@@ -33,3 +33,8 @@ test('las fichas enlazan con sus apuntes y se admiten rutas MDX',()=>{
  assert.match(output,/\/Java-Mastery-Notes\/clases\/apuntes\/dia-02\//);
  assert.equal(routeFor('web-content/laboratorio/trazas.mdx'),'laboratorio/trazas');
 });
+
+test('la portada editorial y el README resuelven a la misma URL',()=>{
+ assert.equal(routeFor('web-content/inicio.mdx'),'index');
+ assert.equal(routeFor('README.md'),'index');
+});

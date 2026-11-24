@@ -15,4 +15,4 @@
 
 **Criterios:** rutas estables bajo /Java-Mastery-Notes/, páginas buscables, código existente intacto, diseño responsive, fuentes explícitas y mantenimiento documentado.
 
-**Decisiones:** anonimizar identificadores conocidos de las notas; no publicar transcripciones o libros. Conservar guía integrada completa aunque se solape. El laboratorio usa componentes Astro y pruebas de navegador; el progreso persistente se reserva para una fase posterior.
+**Decisiones:** anonimizar identificadores conocidos de las notas; no publicar transcripciones o libros. Conservar guía integrada completa aunque se solape. El laboratorio usa componentes Astro y pruebas de navegador; el progreso por bloque se guarda localmente en el navegador, sin cuentas ni base de datos. Se utiliza una portada editorial MDX sin duplicar la ruta raíz del README.

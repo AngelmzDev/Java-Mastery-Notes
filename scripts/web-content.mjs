@@ -16,7 +16,7 @@ const markdown = /\.mdx?$/i;
 
 export function routeFor(file) {
   const name = file.replace(/\\/g, '/');
-  if (name === 'README.md') return 'index';
+  if (name === 'README.md' || name === 'web-content/inicio.mdx') return 'index';
   if (name === 'WEB.md') return 'referencia/desarrollo-web';
   let route = name
     .replace(/^docs\/(\d{2}-[^/]+)\//, 'temario/$1/')
@@ -80,16 +80,18 @@ async function main() {
   const inputs = ['README.md','WEB.md',...(await Promise.all(['docs','ejercicios','00-Conceptos-Base','01-Control-de-Flujo','web-content'].map(walk))).flat()]
     .filter(p=>markdown.test(p) && !p.startsWith('docs/superpowers/') && !p.startsWith('docs/branding/'));
   const routes=new Map(inputs.map(p=>[p,routeFor(p)]));
-  if(new Set(routes.values()).size!==routes.size) throw Error('Rutas duplicadas');
+  const published=inputs.includes('web-content/inicio.mdx') ? inputs.filter(p=>p!=='README.md') : inputs;
+  if(new Set(published.map(p=>routes.get(p))).size!==published.length) throw Error('Rutas duplicadas');
   const output=path.join(root,'src/content/docs');
   await fs.rm(output,{recursive:true,force:true});
-  for(const [source,route] of routes) {
+  for(const source of published) {
+    const route=routes.get(source);
     const extension=source.endsWith('.mdx') ? '.mdx' : '.md';
     const target=path.join(output,route+extension);
     await fs.mkdir(path.dirname(target),{recursive:true});
     const text=await fs.readFile(path.join(root,source),'utf8');
     await fs.writeFile(target,extension==='.mdx' ? text : convert(source,text,routes));
   }
-  console.log('Páginas Markdown generadas:',routes.size);
+  console.log('Páginas Markdown generadas:',published.length);
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();

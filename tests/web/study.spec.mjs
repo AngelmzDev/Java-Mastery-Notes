@@ -55,3 +55,15 @@ test('progressive exercise keeps solution hidden until opened', async ({page})=>
   await detail.locator('summary').click();
   await expect(detail).toHaveAttribute('open','');
 });
+
+test('home has learning routes and progress persists across reload',async ({page})=>{
+ await page.goto('./');
+ await expect(page.getByRole('heading',{name:'Java Mastery Notes',level:1})).toBeVisible();
+ await page.getByRole('link',{name:'Mi progreso',exact:true}).last().click();
+ const block=page.getByRole('combobox',{name:'Estado de Bucles',exact:true});
+ await block.selectOption('done');
+ await expect(page.locator('[data-count="done"]')).toHaveText('1');
+ await page.reload();
+ await expect(block).toHaveValue('done');
+ await expect(page.locator('[data-count="done"]')).toHaveText('1');
+});
