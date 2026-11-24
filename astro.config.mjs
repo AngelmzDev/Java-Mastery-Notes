@@ -20,7 +20,7 @@ export default defineConfig({
     customCss: ['./src/styles/study.css'],
     social: [{icon:'github',label:'GitHub',href:'https://github.com/AngelmzDev/Java-Mastery-Notes'}],
     sidebar: [
-      {label:'Inicio',slug:'index'},
+      {label:'Inicio',link:'/'},
       {label:'Temario',items:directories.map((directory,i)=>({
         label: groups[i] || directory.replace(/^\d+-/,'').replaceAll('-',' '),
         collapsed:true,autogenerate:{directory:'temario/'+directory}

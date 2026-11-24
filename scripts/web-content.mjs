@@ -65,7 +65,8 @@ export function convert(source, text, routes) {
   // Preserve existing explanations. The old repo's attribution remains intact.
   const provenance = source.startsWith('web-content/') ? '' :
     '\n> **Procedencia:** material del repositorio anterior. Consulta sus notas de alcance; no se atribuye automáticamente al profesor.\n';
-  return '---\ntitle: '+JSON.stringify(title)+'\n---\n'+provenance+'\n'+processor.stringify(tree);
+  const home = source === 'README.md' ? '\n## Rutas de estudio por clase\n\n- [Apuntes de los días 2–10]('+base+'clases/)\n- [Colecciones y streams]('+base+'colecciones/)\n' : ''; 
+  return '---\ntitle: '+JSON.stringify(title)+'\n---\n'+home+provenance+'\n'+processor.stringify(tree);
 }
 async function main() {
   const inputs = ['README.md',...(await Promise.all(['docs','ejercicios','00-Conceptos-Base','01-Control-de-Flujo','web-content'].map(walk))).flat()]
