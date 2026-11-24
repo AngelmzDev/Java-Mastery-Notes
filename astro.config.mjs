@@ -18,6 +18,14 @@ export default defineConfig({
     defaultLocale: 'root',
     locales: { root: { label: 'Español', lang: 'es' } },
     customCss: ['./src/styles/study.css'],
+    components: { ThemeSelect: './src/components/ThemeSelect.astro' },
+    head: [
+      // Aplica la paleta guardada antes de pintar, para evitar parpadeos.
+      { tag: 'script', content: "try{document.documentElement.dataset.palette=localStorage.getItem('palette')||'papel'}catch{}" },
+      { tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' } },
+      { tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' } },
+      { tag: 'link', attrs: { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap' } },
+    ],
     social: [{icon:'github',label:'GitHub',href:'https://github.com/AngelmzDev/Java-Mastery-Notes'}],
     sidebar: [
       {label:'Inicio',link:'/'},

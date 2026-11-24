@@ -1,0 +1,31 @@
+---
+import Default from '@astrojs/starlight/components/ThemeSelect.astro';
+---
+<label class="palette">
+  <span class="sr-only">Paleta</span>
+  <select id="palette-select" aria-label="Paleta de colores">
+    <option value="papel">Papel</option>
+    <option value="salvia">Salvia</option>
+    <option value="oceano">Océano</option>
+    <option value="grafito">Grafito</option>
+  </select>
+</label>
+<Default {...Astro.props}><slot /></Default>
+
+<script is:inline>
+  (() => {
+    const sel = document.getElementById('palette-select');
+    let saved = 'papel';
+    try { saved = localStorage.getItem('palette') || 'papel'; } catch {}
+    sel.value = saved;
+    sel.addEventListener('change', () => {
+      document.documentElement.dataset.palette = sel.value;
+      try { localStorage.setItem('palette', sel.value); } catch {}
+    });
+  })();
+</script>
+<style>
+  .palette { display: inline-flex; margin-inline-end: .5rem; }
+  select { font: inherit; font-size: var(--sl-text-sm); color: var(--sl-color-text); background: var(--sl-color-bg-sidebar); border: 1px solid var(--sl-color-hairline); border-radius: 8px; padding: .3rem .5rem; cursor: pointer; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>

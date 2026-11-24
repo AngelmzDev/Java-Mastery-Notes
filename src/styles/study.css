@@ -1,18 +1,101 @@
+/* Paletas suaves para estudiar: sin blanco ni negro puros, contraste cómodo.
+   Se eligen con <html data-palette> (selector en la cabecera). Papel es la de por defecto. */
 :root {
-  --sl-color-accent-low: #d8e9ff;
-  --sl-color-accent: #1e5da8;
-  --sl-color-accent-high: #123761;
+  --sl-font: 'Inter', system-ui, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --sl-content-width: 52rem;
-  --sl-font: system-ui, sans-serif;
+  --st-radius: 14px;
 }
-:root[data-theme='dark'] {
-  --sl-color-accent-low: #172f4f;
-  --sl-color-accent: #82b6ff;
-  --sl-color-accent-high: #d3e7ff;
+
+/* ---------- Papel (cálida, sepia) ---------- */
+:root, :root[data-palette='papel'] {
+  --sl-color-bg: #f6f1e7; --sl-color-bg-nav: #f6f1e7e6; --sl-color-bg-sidebar: #efe8da;
+  --sl-color-hairline: #ddd3bf; --sl-color-white: #2b2418; --sl-color-text: #3b3326;
+  --sl-color-accent: #9a5b1f; --sl-color-accent-low: #f0dfc4; --sl-color-accent-high: #4d2c0c;
 }
-.sl-markdown-content { line-height: 1.75; }
-.sl-markdown-content h2 { margin-top: 2.5rem; }
-.sl-markdown-content pre { border-radius: .6rem; }
-.sl-markdown-content table { font-variant-numeric: tabular-nums; }
-.sl-markdown-content details { border: 1px solid var(--sl-color-gray-5); padding: .85rem 1rem; border-radius:.55rem; }
+:root[data-theme='dark'], :root[data-theme='dark'][data-palette='papel'] {
+  --sl-color-bg: #1d1a15; --sl-color-bg-nav: #1d1a15e6; --sl-color-bg-sidebar: #221f19;
+  --sl-color-hairline: #332e25; --sl-color-white: #f0e9db; --sl-color-text: #d8d0c0;
+  --sl-color-accent: #e0a967; --sl-color-accent-low: #3a2e1d; --sl-color-accent-high: #f1dcb9;
+}
+
+/* ---------- Salvia (verde) ---------- */
+:root[data-palette='salvia'] {
+  --sl-color-bg: #f1f4ee; --sl-color-bg-nav: #f1f4eee6; --sl-color-bg-sidebar: #e8eee4;
+  --sl-color-hairline: #d3dccb; --sl-color-white: #1f2a22; --sl-color-text: #2f3b32;
+  --sl-color-accent: #3f6b49; --sl-color-accent-low: #dbe8d6; --sl-color-accent-high: #1f3d27;
+}
+:root[data-theme='dark'][data-palette='salvia'] {
+  --sl-color-bg: #151b17; --sl-color-bg-nav: #151b17e6; --sl-color-bg-sidebar: #1a211c;
+  --sl-color-hairline: #28332b; --sl-color-white: #eaf1ec; --sl-color-text: #cfd8d1;
+  --sl-color-accent: #8fc59a; --sl-color-accent-low: #22352a; --sl-color-accent-high: #cfe9d5;
+}
+
+/* ---------- Océano (azul) ---------- */
+:root[data-palette='oceano'] {
+  --sl-color-bg: #eff3f8; --sl-color-bg-nav: #eff3f8e6; --sl-color-bg-sidebar: #e5ebf3;
+  --sl-color-hairline: #cfd9e6; --sl-color-white: #1b2430; --sl-color-text: #2d3846;
+  --sl-color-accent: #2f5f9a; --sl-color-accent-low: #d6e3f3; --sl-color-accent-high: #17365c;
+}
+:root[data-theme='dark'][data-palette='oceano'] {
+  --sl-color-bg: #121820; --sl-color-bg-nav: #121820e6; --sl-color-bg-sidebar: #161d27;
+  --sl-color-hairline: #243041; --sl-color-white: #e8eef5; --sl-color-text: #cbd4df;
+  --sl-color-accent: #8db6e8; --sl-color-accent-low: #1e3049; --sl-color-accent-high: #cfe2f7;
+}
+
+/* ---------- Grafito (neutra) ---------- */
+:root[data-palette='grafito'] {
+  --sl-color-bg: #f3f3f1; --sl-color-bg-nav: #f3f3f1e6; --sl-color-bg-sidebar: #eaeae7;
+  --sl-color-hairline: #d6d6d1; --sl-color-white: #1f2225; --sl-color-text: #34383d;
+  --sl-color-accent: #3d4a5c; --sl-color-accent-low: #dfe3e8; --sl-color-accent-high: #1c232d;
+}
+:root[data-theme='dark'][data-palette='grafito'] {
+  --sl-color-bg: #17181a; --sl-color-bg-nav: #17181ae6; --sl-color-bg-sidebar: #1c1d20;
+  --sl-color-hairline: #2a2c30; --sl-color-white: #ececec; --sl-color-text: #cfd1d4;
+  --sl-color-accent: #a9b8cc; --sl-color-accent-low: #2a313b; --sl-color-accent-high: #dbe3ee;
+}
+
+body { letter-spacing: -0.005em; }
+.header { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+
+/* Tipografía del contenido */
+.sl-markdown-content { line-height: 1.8; }
+.sl-markdown-content h1, .sl-markdown-content h2, .sl-markdown-content h3,
+h1#_top { letter-spacing: -0.03em; font-weight: 750; }
+h1#_top { font-size: clamp(2rem, 4.5vw, 2.9rem); line-height: 1.1; }
+.sl-markdown-content h2 { margin-top: 2.75rem; }
+.sl-markdown-content .sl-heading-wrapper.level-h2 { display: block; padding-bottom: .4rem; border-bottom: 1px solid var(--sl-color-hairline); }
+.sl-markdown-content a:not(.sl-link-button) { text-decoration-color: color-mix(in srgb, var(--sl-color-accent) 45%, transparent); text-underline-offset: 3px; transition: text-decoration-color .2s; }
+.sl-markdown-content a:not(.sl-link-button):hover { text-decoration-color: var(--sl-color-accent); }
+
+/* Código */
+.sl-markdown-content :not(pre) > code { border-radius: 6px; padding: .12em .4em; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); border: 0; }
+.sl-markdown-content pre { border-radius: var(--st-radius); }
+.expressive-code .frame { border-radius: var(--st-radius); }
+
+/* Tablas y desplegables */
+.sl-markdown-content table { font-variant-numeric: tabular-nums; border-radius: var(--st-radius); overflow: hidden; border: 1px solid var(--sl-color-hairline); border-collapse: separate; border-spacing: 0; }
+.sl-markdown-content th { background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); }
+.sl-markdown-content details { border: 1px solid var(--sl-color-hairline); padding: .85rem 1rem; border-radius: var(--st-radius); background: var(--sl-color-bg-sidebar); }
 .sl-markdown-content details summary { cursor: pointer; font-weight: 600; }
+
+/* Tarjetas de la portada: se elevan 2px al pasar el puntero */
+.sl-link-card { border-radius: var(--st-radius); border: 1px solid var(--sl-color-hairline); background: var(--sl-color-bg-sidebar); box-shadow: none; transition: transform .2s, border-color .2s; }
+.sl-link-card:hover { transform: translateY(-2px); border-color: var(--sl-color-accent); }
+.sl-link-card .title { font-weight: 700; letter-spacing: -0.015em; }
+
+/* Hero y botones */
+.hero h1 { letter-spacing: -0.04em; color: var(--sl-color-white); }
+.sl-link-button { border-radius: 999px; font-weight: 650; transition: transform .15s, filter .15s; }
+.sl-link-button.primary { background: var(--sl-color-accent); color: var(--sl-color-bg); border-color: var(--sl-color-accent); }
+.sl-link-button:hover { filter: brightness(1.06); }
+.sl-link-button:active { transform: scale(.97); }
+
+/* Barra lateral */
+.sidebar-content a { border-radius: 8px; }
+.sidebar-content a[aria-current='page'] { font-weight: 650; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sl-link-card, .sl-link-button { transition: none; }
+  .sl-link-card:hover { transform: none; }
+}
